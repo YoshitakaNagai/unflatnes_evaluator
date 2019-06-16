@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <package format="2">
-  <name>unflatnes_evaluator</name>
+  <name>unflatness_evaluator</name>
   <version>0.0.0</version>
   <description>The unflatnes_evaluator package</description>
 

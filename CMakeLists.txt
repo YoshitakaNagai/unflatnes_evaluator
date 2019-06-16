@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 2.8.3)
-project(unflatnes_evaluator)
+project(unflatness_evaluator)
 
 ## Compile as C++11, supported in ROS Kinetic and newer
 add_compile_options(-std=c++11)
@@ -75,8 +75,8 @@ include_directories(${Eigen_INCLUDE_DIRS})
 
 ## Generate messages in the 'msg' folder
 # add_message_files(
-#    FILES
-#    point_id.msg
+#    #FILES
+#    #point_id.msg
 # )
 #
 ## Generate services in the 'srv' folder
@@ -128,12 +128,12 @@ include_directories(${Eigen_INCLUDE_DIRS})
 ## LIBRARIES: libraries you create in this project that dependent projects also need
 ## CATKIN_DEPENDS: catkin_packages dependent projects also need
 ## DEPENDS: system dependencies of this project that dependent projects also need
-# catkin_package(
+catkin_package(
 #   INCLUDE_DIRS msg
 #   LIBRARIES nagayne_pointcloud
 #   CATKIN_DEPENDS message_runtime
 # #  DEPENDS system_lib
-# )
+)
 #
 ###########
 ## Build ##
@@ -142,7 +142,7 @@ include_directories(${Eigen_INCLUDE_DIRS})
 ## Specify additional locations of header files
 ## Your package locations should be listed before other locations
 include_directories(
-# include
+  include
   ${catkin_INCLUDE_DIRS}
 )
 
@@ -170,6 +170,7 @@ target_link_libraries(curvature_calculator
 )
 
 add_executable(unflatness_calculator src/unflatness_calculator.cpp)
+add_dependencies(unflatness_calculator ${${PROJECT_NAME}_EXPORTED_TARGETS} ${catkin_EXPORTED_TARGETS})
 target_link_libraries(unflatness_calculator
 	${catkin_LIBRARIES}
 	${OpenCV_LIBRARIES}
